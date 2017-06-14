@@ -1,0 +1,73 @@
+<head>
+  <title>DemoApp 2017</title>
+</head>
+
+<template name="main">
+  <h1>Main page</h1>
+  {{> addplaces}}
+  <hr>
+  {{> showplaces}}
+</template>
+
+<template name="about">
+  <h1>About this app</h1>
+  <h2>Katherine's website!!</h2>
+</template>
+
+<template name="info">
+  <h1>Information here</h1>
+</template>
+
+<template name="layout">
+  <div class="container">
+  <h1>DemoApp 2017</h1>
+  {{> yield}}
+  <hr>
+  <a href="/">home</a>
+  <a href="/about">about</a>
+  <a href="/info">info</a>
+  {{> loginButtons}}
+  </div>
+</template>
+
+<template name="addplaces">
+  Name: <input type="text" placeholder="your name" id="name"><br>
+  Place you want to go:
+  <select >
+    <option>Asia</option>
+    <option>Europe</option>
+    <option>North America</option>
+    <option>South America</option>
+    <option>Africa</option>
+  </select>
+  <input type="text" id="place"><br>
+  Budget in US dolloars: <input type="text" id="budget"><br>
+  <button id="addplace" class="btn btn-primary">
+    Add to Collection
+  </button>
+</template>
+
+<!-- <template name="showpeople">
+  <ul>
+  {{#each p in peoplelist}}
+    <li>{{> personrow person=p}}</li>
+  {{/each}}
+  </ul>
+</template> -->
+
+<template name="placerow">
+  {{pl.name}}--{{pl.place}}--${{pl.budget}}
+  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+</template>
+
+<template name="showplaces">
+  {{#if currentUser}}
+  <ul>
+    {{#each p in placeData}}
+      <li>{{> placerow pl=p}}</li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <h1>You must login to see information</h1>
+  {{/if}}
+</template>
